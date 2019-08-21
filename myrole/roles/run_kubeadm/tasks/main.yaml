@@ -8,7 +8,7 @@
   register: kubeadm_init_output
 - debug: msg="{{ kubeadm_init_output.stdout }}"
 - name: Wait for cluster to create pods
-  command: sleep 10
+  command: sleep 120
 - name: settingup kubeconfig for kubectl
   command: "{{item}}"
   with_items:
