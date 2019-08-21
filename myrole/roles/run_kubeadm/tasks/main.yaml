@@ -16,8 +16,8 @@
    #       - mkdir -p $HOME/.kube
    #       - cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
             #          - chown $(id -u):$(id -g) $HOME/.kube/config
-- name: change ownership
-  file: dest="$HOME/.kube/config" owner={{ ansible_user }} group={{ ansible_user}}
+#- name: change ownership
+#  file: dest="$HOME/.kube/config" owner={{ ansible_user }} group={{ ansible_user}}
 - name: Install calico network for k8s cluster
   command: kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
   register: calico_check
