@@ -8,9 +8,12 @@
   register: kubeadm_init_output
 - debug: msg="{{ kubeadm_init_output.stdout }}"
 - name: Wait for cluster to create pods
-  command: sleep 360
+  command: sleep 5
 - name: settingup kubeconfig for kubectl
   command: cp -i /etc/kubernetes/admin.conf ~/.kube/config
+  register: test2
+
+- debug: msg="{{ test2.stdout }}"
   #command: "{{item}}"
   #with_items:
    #       - mkdir -p $HOME/.kube
@@ -18,7 +21,7 @@
             #          - chown $(id -u):$(id -g) $HOME/.kube/config
 #- name: change ownership
 #  file: dest="$HOME/.kube/config" owner={{ ansible_user }} group={{ ansible_user}}
-- name: Install calico network for k8s cluster
-  command: kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
-  register: calico_check
-- debug: msg="{{ calico_check.stdout   }}" 
+#- name: Install calico network for k8s cluster
+#  command: kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+#  register: calico_check
+#- debug: msg="{{ calico_check.stdout   }}" 
