@@ -26,5 +26,6 @@
 - name: Install calico network for k8s cluster
 #  command: /usr/bin/kubectl apply -f calico.yaml
   command: /usr/bin/kubectl get po --all-namespaces
+  sudo: yes
   register: calico_check
 - debug: msg="{{ calico_check.stdout   }}" 
