@@ -14,7 +14,7 @@
 
 - debug: msg="{{ test2.stdout }}"
 - name: Wait for cluster to create pods
-  command: sleep 360
+  command: sleep 150
   sudo: yes
   #command: "{{item}}"
   #with_items:
