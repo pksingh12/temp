@@ -14,7 +14,8 @@
 
 - debug: msg="{{ test2.stdout }}"
 - name: Wait for cluster to create pods
-  command: sleep 500
+  command: sleep 360
+  sudo: yes
   #command: "{{item}}"
   #with_items:
    #       - mkdir -p $HOME/.kube
