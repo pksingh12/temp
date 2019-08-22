@@ -22,6 +22,6 @@
 #- name: change ownership
 #  file: dest="$HOME/.kube/config" owner={{ ansible_user }} group={{ ansible_user}}
 - name: Install calico network for k8s cluster
-  command: /usr/bin/kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+  command: /usr/bin/kubectl apply -f calico.yaml
   register: calico_check
 - debug: msg="{{ calico_check.stdout   }}" 
