@@ -7,13 +7,14 @@
   command: kubeadm init --pod-network-cidr 192.168.0.0/16 --apiserver-advertise-address {{ ansible_default_ipv4.address   }}  
   register: kubeadm_init_output
 - debug: msg="{{ kubeadm_init_output.stdout }}"
-- name: Wait for cluster to create pods
-  command: sleep 240
+
 - name: settingup kubeconfig for kubectl
   command: cp -i /etc/kubernetes/admin.conf ~/.kube/config
   register: test2
 
 - debug: msg="{{ test2.stdout }}"
+- name: Wait for cluster to create pods
+  command: sleep 500
   #command: "{{item}}"
   #with_items:
    #       - mkdir -p $HOME/.kube
