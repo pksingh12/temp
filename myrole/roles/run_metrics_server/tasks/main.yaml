@@ -11,22 +11,22 @@
 - debug: msg="{{ v.stdout }}"
   
 
-- name: Copy file with owner permissions
-  copy:
-    src: /temp/myrole/roles/run_metrics_server/files/{{ item }}
-    dest: /tmp/metrics_server_files
-  with_items:
-    - aggregated-metrics-reader.yaml
-    - auth-delegator.yaml
-    - auth-reader.yaml
-    - metrics-apiservice.yaml
-    - metrics-server-deployment.yaml
-    - metrics-server-service.yaml
-    - resource-reader.yaml
+#- name: Copy file with owner permissions
+#  copy:
+#    src: /temp/myrole/roles/run_metrics_server/files/{{ item }}
+ #   dest: /tmp/metrics_server_files
+#  with_items:
+ #   - aggregated-metrics-reader.yaml
+ #   - auth-delegator.yaml
+ #   - auth-reader.yaml
+  #  - metrics-apiservice.yaml
+  #  - metrics-server-deployment.yaml
+  #  - metrics-server-service.yaml
+  #  - resource-reader.yaml
   
 - name: Applying metrics server k8s objects
   sudo: true
-  command: sudo kubectl create -f /tmp/metrics_server_files -n kube-system
+  command: sudo kubectl create -f /temp/myrole/roles/run_metrics_server/files/ -n kube-system
   register: metrics_server_configured
   
 - debug: msg="{{ metrics_server_configured.stdout }}"
