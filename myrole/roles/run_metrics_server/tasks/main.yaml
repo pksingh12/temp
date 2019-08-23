@@ -10,5 +10,30 @@
     src: files{{ item }}
     dest: /tmp/metrics_server_files
   with_items:
+    - aggregated-metrics-reader.yaml
+    - auth-delegator.yaml
+    - auth-reader.yaml
+    - metrics-apiservice.yaml
+    - metrics-server-deployment.yaml
+    - metrics-server-service.yaml
+    - resource-reader.yaml
+  
+- name: Applying metrics server k8s objects
+  sudo: true
+  command: sudo kubectl create -f /tmp/metrics_server_files -n kube-system
+  register: metrics_server_configured
+  
+- debug: msg="{{ metrics_server_configured.stdout }}"
+
+- name: Verify metrics server
+  sudo: yes
+  command: sudo kubectl get po -n kube-system
+  register: metrics_server_status
+  
+- debug: msg="{{ metrics_server_configured.stdout }}"
+  
+  
+
+ 
     
     
