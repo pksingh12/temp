@@ -4,6 +4,12 @@
     path: /tmp/metrics_server_files
     state: directory
     
+- name: check files
+  sudo: true
+  command: ls -ltr /temp/myrole/roles/run_metrics_server/files/
+  register: v
+- debug: msg="{{ v.stdout }}"
+  
 
 - name: Copy file with owner permissions
   copy:
