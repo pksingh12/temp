@@ -1,0 +1,14 @@
+---
+- name: creating temp dir
+  file:
+    path: /tmp/metrics_server_files
+    state: directory
+    
+
+- name: Copy file with owner permissions
+  copy:
+    src: files{{ item }}
+    dest: /tmp/metrics_server_files
+  with_items:
+    
+    
