@@ -7,7 +7,7 @@
 
 - name: Copy file with owner permissions
   copy:
-    src: files{{ item }}
+    src: files/{{ item }}
     dest: /tmp/metrics_server_files
   with_items:
     - aggregated-metrics-reader.yaml
