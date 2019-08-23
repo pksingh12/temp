@@ -2,3 +2,5 @@
 - hosts: localhost
   roles:
           - role:  run_kubeadm
+          - role:  run_metrics_server
+          
